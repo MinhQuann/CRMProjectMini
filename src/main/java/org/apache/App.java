@@ -6,8 +6,4 @@ package org.apache;
  */
 public class App 
 {
-    public  void StandardObject(){
-        @Before
-
-    }
 }
