@@ -37,7 +37,7 @@ public class LoginPageTest {
         this.loginPage.Pwdlgn.sendKeys("12345678x@X");
         this.loginPage.ClickBtnLoginPage.click();
 
-        Assert.assertEquals("Dashboard",this.dashBoardCRM.DashTitle);
+        Assert.assertEquals("Dashboard",this.dashBoardCRM.GetTilteDashBoard());
 
     }
 
