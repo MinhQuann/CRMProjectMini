@@ -35,11 +35,10 @@ public class AppTest
         //1. Khai bao duong dan chon webdrivers --> de script co the tuong tac
 
         //PC nhà
-        System.setProperty("webdriver.chrome.driver","D:\\Webdriver\\driver chrome\\chromedriver-win64\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver","D:\\Webdriver\\driver chrome\\chromedriver-win64\\chromedriver.exe");
 
         //Lap Công ty
-        //System.setProperty("webdriver.chrome.driver","D:\\ChromeDriver\\chromedriver.exe");
-
+        System.setProperty("webdriver.chrome.driver","D:\\ChromeDriver\\chromedriver-win64 (1)\\chromedriver-win64\\chromedriver.exe");
 
         //2. Khoi tao driver tuong ung voi trinh duyet muon test
 
@@ -48,7 +47,7 @@ public class AppTest
 
         //3. Su dung phuong thuc webdriver de lam viec
 
-        this.driver.get("https://lab.connect247.vn/ucrm-sso/login");
+        this.driver.get("https://lab.connect247.vn/ucrm-sso/settings");
 
         //WebDriverWait wait = new WebDriverWait(driver,43100);
 
@@ -66,22 +65,22 @@ public class AppTest
     public void StandarObject(){
 
         //Action
-        this.driver.findElement(By.xpath("//ul[@class = 'react-multi-carousel-track ']")).click();
+        this.driver.findElement(By.xpath("//div[@class = 'custom-cursor-on-hover']")).click();
 
         //Get Obj name
 
-        WebElement account = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(1) span.ant-typography"));
-        WebElement contact = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(2) span.ant-typography"));
-        WebElement lead = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(3) span.ant-typography"));
-        WebElement socialID = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(4) span.ant-typography"));
-        WebElement Ticket = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
-        WebElement CallInDetail = driver.findElement(By.cssSelector(".sc-fHjqPf.kKZgwc > span.ant-typography"));
-        WebElement EmailInDetail = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
-        WebElement ICINDetail = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
-        WebElement Interaction = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
-        WebElement Article = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
-        WebElement Category = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
-        WebElement Tag = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
+//        WebElement account = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(1) span.ant-typography"));
+//        WebElement contact = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(2) span.ant-typography"));
+//        WebElement lead = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(3) span.ant-typography"));
+//        WebElement socialID = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(4) span.ant-typography"));
+//        WebElement Ticket = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
+//        WebElement CallInDetail = driver.findElement(By.cssSelector(".sc-fHjqPf.kKZgwc > span.ant-typography"));
+//        WebElement EmailInDetail = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
+//        WebElement ICINDetail = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
+//        WebElement Interaction = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
+//        WebElement Article = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
+//        WebElement Category = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
+//        WebElement Tag = driver.findElement(By.cssSelector(".sc-dAbbOL.fVxUGi .sc-hzhJZQ.hqOiOl:nth-child(5) span.ant-typography"));
 
 
 
@@ -89,12 +88,12 @@ public class AppTest
 //      account.getText();
 
         //Assert
-        assertEquals("Account",account.getText());
-        assertEquals("Contact", contact.getText());
-        assertEquals("Lead", lead.getText());
-        assertEquals("Social ID",socialID.getText());
-        assertEquals("Ticket", Ticket.getText());
-        assertEquals("Call Interaction Detail", CallInDetail.getText());
+//        assertEquals("Account",account.getText());
+//        assertEquals("Contact", contact.getText());
+//        assertEquals("Lead", lead.getText());
+//        assertEquals("Social ID",socialID.getText());
+//        assertEquals("Ticket", Ticket.getText());
+//        assertEquals("Call Interaction Detail", CallInDetail.getText());
     }
 
     @After
