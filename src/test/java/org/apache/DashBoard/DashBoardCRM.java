@@ -9,7 +9,7 @@ public class DashBoardCRM {
 
     WebDriver driver;
 
-    @FindBy(id = "#test1")
+    @FindBy(css = "div##test1.title")
     public WebElement DashTitle;
 
 
@@ -21,10 +21,8 @@ public class DashBoardCRM {
 
     }
 
-    public String GetTilteDashBoard(){
-
-        return DashTitle.getText();
-
+    public String GetTitleDashBoard(){
+        return driver.getTitle();
 
     }
 
