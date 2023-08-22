@@ -6,8 +6,12 @@ import org.apache.LoginPageCRM.LoginPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.security.Key;
 
 public class UserPageTest {
 
@@ -44,10 +48,20 @@ public class UserPageTest {
         this.accountSettings.Email.sendKeys("quanbnm01@gmail.com");
         this.accountSettings.Password.sendKeys("12345678x@X");
         this.accountSettings.VerifyPass.sendKeys("12345678x@X");
-        this.accountSettings.Role.sendKeys("LV1");
-        this.accountSettings.Role.sendKeys("Cây táo nở hoa");
-
+        this.accountSettings.Role.sendKeys("LV2" + Keys.ENTER);
+        this.accountSettings.ReportTo.sendKeys("Cây táo nở hoa" + Keys.ENTER);
+        this.accountSettings.Save.click();
         //Assert
+
+        try {
+            this.accountSettings.CheckUser();
+            System.out.println("new user display");
+        }catch (Exception e){
+            System.out.println("New user not display");
+        }
+
+
+
 
 
 

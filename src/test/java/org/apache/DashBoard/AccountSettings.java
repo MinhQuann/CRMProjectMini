@@ -5,13 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.security.PublicKey;
 import java.time.Duration;
-import java.util.List;
 
 public class AccountSettings {
 
@@ -40,6 +37,9 @@ public class AccountSettings {
     @FindBy(id = "report_to")
     public WebElement ReportTo;
 
+    @FindBy(css = "button[type ='submit']")
+    public WebElement Save;
+
     public WebElement Excel;
 
     @FindBy(css = "img[alt = 'edit']")
@@ -61,11 +61,12 @@ public class AccountSettings {
         this.driver.findElement(AddUser).click();
     }
 
-    public List<WebElement> user(){
-        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(40));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated())
-
+    public WebElement CheckUser(){
+        WebDriverWait newUserInListView = new WebDriverWait(this.driver, Duration.ofSeconds(20));
+        return newUserInListView.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@id='usersTable']//td[text()='quanbnm01@gmail.com']")));
     }
+
+
 
 
 
