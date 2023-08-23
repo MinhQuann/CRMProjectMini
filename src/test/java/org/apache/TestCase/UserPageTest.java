@@ -4,6 +4,7 @@ import org.apache.DashBoard.AccountSettings;
 import org.apache.DashBoard.DashBoardCRM;
 import org.apache.LoginPageCRM.LoginPage;
 import org.apache.SettingPageLocator.SettingPage;
+import org.apache.hc.core5.reactor.Command;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,6 +13,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.security.Key;
 
@@ -28,7 +30,8 @@ public class UserPageTest {
 
     @Before
     public void InitTest() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver","D:\\ChromeDriver\\chromedriver-win64 (1)\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","D:\\Webdriver\\driver chrome\\chromedriver-win64\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver","D:\\ChromeDriver\\chromedriver-win64 (1)\\chromedriver-win64\\chromedriver.exe");
         this.driver = new ChromeDriver();
         this.driver.manage().window().maximize();
         this.driver.get("https://lab.connect247.vn/ucrm-sso/settings");
@@ -51,19 +54,20 @@ public class UserPageTest {
     }
 
     @Test
-    public void Create_new_user(){
+    public void Create_new_user() throws InterruptedException {
         this.accountSettings.AddUser();
         this.accountSettings.FirstName.sendKeys("Minh");
-        this.accountSettings.LastName.sendKeys("A");
-        this.accountSettings.Email.sendKeys("quanbnm02@gmail.com");
+        this.accountSettings.LastName.sendKeys("Quân");
+        this.accountSettings.Email.sendKeys("quanbnm01@gmail.com");
         this.accountSettings.Password.sendKeys("12345678x@X");
         this.accountSettings.VerifyPass.sendKeys("12345678x@X");
         this.accountSettings.Role.sendKeys("LV2" + Keys.ENTER);
+        Thread.sleep(3000);
         this.accountSettings.ReportTo.sendKeys("Cây táo nở hoa" + Keys.ENTER);
         this.accountSettings.Save.click();
         //Assert
         try {
-            if (this.accountSettings.CheckNotiUserAlreadyExist().equals("This email is already register")){
+            if (this.accountSettings.CheckNotiUserAlreadyExist()){
                 System.out.println("This email is already Register");
             }else {
                 Thread.sleep(4000);
@@ -77,7 +81,7 @@ public class UserPageTest {
 
     @Test
     public void Delete_User() throws InterruptedException {
-        this.accountSettings.OffUser.click();
+        this.accountSettings.CheckOnOffUser();
         this.accountSettings.BtnTrans.click();
         try {
             Thread.sleep(2000);
@@ -89,14 +93,23 @@ public class UserPageTest {
         this.accountSettings.TransData.sendKeys("Cây táo nở hoa" +  Keys.ENTER);
         Thread.sleep(2000);
         this.accountSettings.SaveDel.click();
+        this.accountSettings.ConfirmDelButton.click();
 
+        try {
+            Thread.sleep(4000);
+            Assert.assertEquals(this.accountSettings.CheckUserOnDisplay(),!this.accountSettings.CheckUserOnDisplay());
+
+        }catch (Exception e){
+            System.out.println("Error");
+        }
 
 
     }
 
     @After
-    public void End(){
-        //driver.quit();
+    public void End() throws InterruptedException {
+        Thread.sleep(5000);
+        driver.quit();
     }
 
 }

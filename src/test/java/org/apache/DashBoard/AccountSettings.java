@@ -20,20 +20,23 @@ public class AccountSettings {
 
     By UserExist = By.cssSelector("div.ant-notification-notice-description");
 
+
     @FindBy(xpath = "//button[@type = 'submit']")
     public WebElement BtnTrans;
 
-    @FindBy(css = "span.ant-switch-inner")
-    public WebElement OffUser;
+    By OffUser = By.cssSelector("span.ant-switch-inner");
 
     By DelUserbtn = By.cssSelector("img[alt = 'delete']");
+
+    @FindBy(css = "button[class = 'ant-btn ant-btn-default ant-btn-lg sc-bBeLUv gBWGXY']")
+    public WebElement ConfirmDelButton;
 
     @FindBy(css = "button[class = 'ant-btn ant-btn-primary']")
     public WebElement SaveDel;
 
+    @FindBy(css = "input#transfer")
+    public WebElement TransData;
 
-    @FindBy(css= "input#transfer")
-    public  WebElement TransData;
     @FindBy(id = "first_name")
     public WebElement FirstName;
 
@@ -67,37 +70,36 @@ public class AccountSettings {
     public WebElement keychangPwd;
 
 
-
-    public AccountSettings(WebDriver driver){
+    public AccountSettings(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
 
-    public void AddUser(){
+    public void AddUser() throws InterruptedException {
+        Thread.sleep(3000);
         this.driver.findElement(AddUser).click();
     }
 
-    public String CheckUserOnDisplay(){
+    public boolean CheckUserOnDisplay() {
         WebDriverWait newUserInListView = new WebDriverWait(this.driver, Duration.ofSeconds(50));
-        return newUserInListView.until(ExpectedConditions.visibilityOfElementLocated(User)).getText();
+        return newUserInListView.until(ExpectedConditions.visibilityOfElementLocated(User)).isDisplayed();
     }
 
-    public String CheckNotiUserAlreadyExist(){
+    public boolean CheckNotiUserAlreadyExist() {
         WebDriverWait CheckNoti = new WebDriverWait(this.driver, Duration.ofSeconds(50));
-        return  CheckNoti.until(ExpectedConditions.visibilityOfElementLocated(UserExist)).getText();
+        return CheckNoti.until(ExpectedConditions.visibilityOfElementLocated(UserExist)).isDisplayed();
     }
 
-    public void DelUserbtn(){
+    public void DelUserbtn() {
         this.driver.findElement(DelUserbtn).click();
 
-
-
     }
-
-
-
-
-
-
+    public void CheckOnOffUser() {
+        if (this.driver.findElement(OffUser).getText().equals("ON")) {
+            this.driver.findElement(OffUser).click();
+        }else {
+            this.driver.findElement(OffUser).click();
+        }
+    }
 
 }
