@@ -26,12 +26,9 @@ public class AccountSettings {
     @FindBy(css = "span.ant-switch-inner")
     public WebElement OffUser;
 
-//    @FindBy(css = "img[alt = 'delete']")
-//    public WebElement DelUserbtn;
-//
     By DelUserbtn = By.cssSelector("img[alt = 'delete']");
 
-    @FindBy(xpath = "//button[@type = 'submit']")
+    @FindBy(xpath = "button[class = 'ant-btn ant-btn-primary'] ")
     public WebElement SaveDel;
 
     @FindBy(css= "input#transfer")
@@ -90,7 +87,13 @@ public class AccountSettings {
     }
 
     public void DelUserbtn(){
-        this.driver.findElement(DelUserbtn).click();
+        try {
+            Thread.sleep(2000);
+            this.driver.findElement(DelUserbtn).click();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
     }
