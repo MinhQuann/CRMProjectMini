@@ -1,4 +1,4 @@
-package org.apache;
+package org.apache.TestCase;
 
 
 import org.apache.DashBoard.DashBoardCRM;

@@ -16,6 +16,26 @@ public class AccountSettings {
 
     By AddUser = By.cssSelector("button[type = button].users__AddButton-sc-10v6jm4-3");
 
+    By User = By.xpath("//*[@id=\"root\"]/section/section/main/div/div[2]/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/div");
+
+    By UserExist = By.cssSelector("div.ant-notification-notice-description");
+
+    @FindBy(xpath = "//button[@type = 'submit']")
+    public WebElement BtnTrans;
+
+    @FindBy(css = "span.ant-switch-inner")
+    public WebElement OffUser;
+
+//    @FindBy(css = "img[alt = 'delete']")
+//    public WebElement DelUserbtn;
+//
+    By DelUserbtn = By.cssSelector("img[alt = 'delete']");
+
+    @FindBy(xpath = "//button[@type = 'submit']")
+    public WebElement SaveDel;
+
+    @FindBy(css= "input#transfer")
+    public  WebElement TransData;
     @FindBy(id = "first_name")
     public WebElement FirstName;
 
@@ -45,8 +65,6 @@ public class AccountSettings {
     @FindBy(css = "img[alt = 'edit']")
     public WebElement Edit;
 
-    public WebElement Del;
-
     @FindBy(css = "img[alt = 'changePass']")
     public WebElement keychangPwd;
 
@@ -61,9 +79,20 @@ public class AccountSettings {
         this.driver.findElement(AddUser).click();
     }
 
-    public WebElement CheckUser(){
-        WebDriverWait newUserInListView = new WebDriverWait(this.driver, Duration.ofSeconds(20));
-        return newUserInListView.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@id='usersTable']//td[text()='quanbnm01@gmail.com']")));
+    public String CheckUserOnDisplay(){
+        WebDriverWait newUserInListView = new WebDriverWait(this.driver, Duration.ofSeconds(50));
+        return newUserInListView.until(ExpectedConditions.visibilityOfElementLocated(User)).getText();
+    }
+
+    public String CheckNotiUserAlreadyExist(){
+        WebDriverWait CheckNoti = new WebDriverWait(this.driver, Duration.ofSeconds(50));
+        return  CheckNoti.until(ExpectedConditions.visibilityOfElementLocated(UserExist)).getText();
+    }
+
+    public void DelUserbtn(){
+        this.driver.findElement(DelUserbtn).click();
+
+
     }
 
 
