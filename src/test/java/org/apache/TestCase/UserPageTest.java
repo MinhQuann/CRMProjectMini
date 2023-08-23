@@ -76,7 +76,7 @@ public class UserPageTest {
     }
 
     @Test
-    public void Delete_User(){
+    public void Delete_User() throws InterruptedException {
         this.accountSettings.OffUser.click();
         this.accountSettings.BtnTrans.click();
         try {
@@ -85,7 +85,9 @@ public class UserPageTest {
         }catch (Exception e){
             System.out.println("Check time");
         }
+        Thread.sleep(2000);
         this.accountSettings.TransData.sendKeys("Cây táo nở hoa" +  Keys.ENTER);
+        Thread.sleep(2000);
         this.accountSettings.SaveDel.click();
 
 
