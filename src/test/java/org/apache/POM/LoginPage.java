@@ -1,26 +1,19 @@
-package org.apache.LoginPageCRM;
+package org.apache.POM;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
-public class LoginPage {
+public class LoginPage extends PageObjectBase {
 
     WebDriver driver;
-    @FindBy(xpath = "//button[@class = 'ant-btn ant-btn-primary'] ")
-    public WebElement clickBtnLoginOutSidePage;
+
+    By clickBtnLoginOutSidePage = By.cssSelector("button.ant-btn-primary");
 
     @FindBy(id = "basic_email")
     public WebElement EmailLgn;
@@ -51,8 +44,17 @@ public class LoginPage {
 
 
     public  LoginPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
+        super(driver);
+    }
+
+    public void Open(String mail, String s){
+        this.driver.get("https://lab.connect247.vn/ucrm-sso/dashboard");
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        this.getDynamicElement(clickBtnLoginOutSidePage).click();
+    }
+    public void Login(String username, String pwd){
+        this.EmailLgn.sendKeys(username);
+        this.Pwdlgn.sendKeys(pwd);
     }
 
     public String ErrMsg(){
@@ -73,21 +75,6 @@ public class LoginPage {
     }
 
 
-//    public void WaitForPageLoaded(){
-//        ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-//            @Override
-//            public Boolean apply(WebDriver driver) {
-//                return ((JavascriptExecutor)driver).executeScript("Return document.readyState").toString().equals("complete");
-//            }
-//        };
-//        try {
-//            Thread.sleep(1000);
-//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//            wait.until(expectation);
-//        } catch (Throwable error) {
-//            Assert.fail("Timeout waiting for Page Load Request to complete");
-//        }
-//    }
 
 
 }
