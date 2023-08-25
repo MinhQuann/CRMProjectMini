@@ -16,10 +16,10 @@ public class PageObjectBase {
 
         this.driver = driver;
     }
-
     public WebElement getDynamicElement(By locator){
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(50));
         return  wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
     }
+
 }
