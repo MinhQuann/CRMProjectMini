@@ -15,7 +15,6 @@ public class LoginPage extends PageObjectBase {
 
     WebDriver driver;
 
-
     By clickBtnLoginOutSidePage = By.cssSelector("button.ant-btn-primary");
 
     @FindBy(id = "basic_email")
@@ -47,8 +46,9 @@ public class LoginPage extends PageObjectBase {
 
 
     public LoginPage(WebDriver driver){
-
         super(driver);
+        this.driver = driver;
+        PageFactory.initElements(this.driver, this);
     }
 
     public void Open()
@@ -56,15 +56,12 @@ public class LoginPage extends PageObjectBase {
         this.driver.get("https://lab.connect247.vn/ucrm-sso/");
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         this.getDynamicElement(clickBtnLoginOutSidePage).click();
-
-        PageFactory.initElements(this.driver, this);
     }
 
     public void Login(String username, String pwd){
         this.EmailLgn.sendKeys(username);
         this.Pwdlgn.sendKeys(pwd);
         this.ClickBtnLoginPage.click();
-
     }
 
     public String ErrMsg(){
