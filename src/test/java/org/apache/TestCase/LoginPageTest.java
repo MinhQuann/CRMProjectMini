@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginPageTest {
+public class LoginPageTest{
 
     ChromeDriver driver;
     LoginPage loginPage;
@@ -20,20 +20,18 @@ public class LoginPageTest {
 
         //PC nhà
         //System.setProperty("webdriver.chrome.driver","D:\\Webdriver\\driver chrome\\chromedriver-win64\\chromedriver.exe");
-
         //Lap Công ty
         System.setProperty("webdriver.chrome.driver","D:\\ChromeDriver\\chromedriver-win64 (1)\\chromedriver-win64\\chromedriver.exe");
+
         this.driver = new ChromeDriver();
-        this.loginPage = new LoginPage(this.driver);
         this.dashBoardCRM = new DashBoardCRM(this.driver);
+        this.loginPage = new LoginPage(this.driver);
     }
 
     @Test
     public void Verify_Login_with_Email_Pwd_Correct(){
-        this.loginPage.Open("quanbnm@gmail.com", "12345678x@X");
-//        this.loginPage.EmailLgn.sendKeys("quanbnm@gmail.com");
-//        this.loginPage.Pwdlgn.sendKeys("12345678x@X");
-        this.loginPage.ClickBtnLoginPage.click();
+        this.loginPage.Open();
+        this.loginPage.Login("quanbnm@gmail.com","12345678x@X");
         try {
             Thread.sleep(4000);
             Assert.assertEquals("Dashboard", this.dashBoardCRM.GetTitleDashBoard());

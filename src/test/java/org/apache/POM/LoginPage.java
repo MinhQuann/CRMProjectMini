@@ -44,17 +44,20 @@ public class LoginPage extends PageObjectBase {
 
 
     public  LoginPage(WebDriver driver){
+
         super(driver);
     }
 
-    public void Open(String mail, String s){
-        this.driver.get("https://lab.connect247.vn/ucrm-sso/dashboard");
+    public void Open(){
+        this.driver.get("https://lab.connect247.vn/ucrm-sso/");
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         this.getDynamicElement(clickBtnLoginOutSidePage).click();
     }
+
     public void Login(String username, String pwd){
         this.EmailLgn.sendKeys(username);
         this.Pwdlgn.sendKeys(pwd);
+        this.ClickBtnLoginPage.click();
     }
 
     public String ErrMsg(){
