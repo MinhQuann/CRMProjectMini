@@ -13,11 +13,13 @@ public class PageObjectBase {
     WebDriver driver;
 
     public PageObjectBase(WebDriver driver){
+
         this.driver = driver;
     }
 
     public WebElement getDynamicElement(By locator){
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
         return  wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
     }
 }

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -43,7 +44,7 @@ public class LoginPage extends PageObjectBase {
     public WebElement ClickBacktoLoginPage;
 
 
-    public  LoginPage(WebDriver driver){
+    public LoginPage(WebDriver driver){
 
         super(driver);
     }
@@ -52,12 +53,15 @@ public class LoginPage extends PageObjectBase {
         this.driver.get("https://lab.connect247.vn/ucrm-sso/");
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         this.getDynamicElement(clickBtnLoginOutSidePage).click();
+
+        PageFactory.initElements(this.driver, this);
     }
 
     public void Login(String username, String pwd){
         this.EmailLgn.sendKeys(username);
         this.Pwdlgn.sendKeys(pwd);
         this.ClickBtnLoginPage.click();
+
     }
 
     public String ErrMsg(){
