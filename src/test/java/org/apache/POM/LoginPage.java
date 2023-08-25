@@ -3,6 +3,7 @@ package org.apache.POM;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,6 +14,7 @@ import java.time.Duration;
 public class LoginPage extends PageObjectBase {
 
     WebDriver driver;
+
 
     By clickBtnLoginOutSidePage = By.cssSelector("button.ant-btn-primary");
 
@@ -49,7 +51,8 @@ public class LoginPage extends PageObjectBase {
         super(driver);
     }
 
-    public void Open(){
+    public void Open()
+    {
         this.driver.get("https://lab.connect247.vn/ucrm-sso/");
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         this.getDynamicElement(clickBtnLoginOutSidePage).click();
